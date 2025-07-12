@@ -1,7 +1,9 @@
-import { Box, Button, TextField, Typography } from '@mui/material'
+import { AppBar, Box, Button, Container, TextField, Toolbar, Typography, Link, Paper } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import http from '../../../http'
+
+import { Link as RouterLink } from 'react-router-dom'
 
 const FormularioRestaurante = () => {
   const parametros = useParams()
@@ -38,21 +40,39 @@ const FormularioRestaurante = () => {
 
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <Typography component="h1" variant="h6">Formulário de restaurantes</Typography>
-      <Box component="form" onSubmit={aoSubmeterForm}>
-        <TextField 
-          value={nomeRestautante} 
-          onChange={ evento => setNomeRestaurantes(evento.target.value) }  
-          label="Nome do restaurante" 
-          variant="standard" 
-          fullWidth
-          required
-        />
-        <Button sx={{ marginTop: 1}} type='submit' fullWidth variant="outlined">Salvar</Button>
+    <>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          flexGrow: 1,
+        }}
+      >
+        <Typography component="h1" variant="h6">
+          Formulário de restaurantes
+        </Typography>
+        <Box component="form" sx={{ width: "100%" }} onSubmit={aoSubmeterForm}>
+          <TextField
+            value={nomeRestautante}
+            onChange={(evento) => setNomeRestaurantes(evento.target.value)}
+            label="Nome do restaurante"
+            variant="standard"
+            fullWidth
+            required
+          />
+          <Button
+            sx={{ marginTop: 1 }}
+            type="submit"
+            fullWidth
+            variant="outlined"
+          >
+            Salvar
+          </Button>
+        </Box>
       </Box>
-    </Box>
-  )
+    </>
+  );
 }
 
 export default FormularioRestaurante
